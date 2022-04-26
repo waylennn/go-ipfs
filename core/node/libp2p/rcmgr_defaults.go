@@ -31,8 +31,8 @@ func adjustedDefaultLimits(cfg config.SwarmConfig) rcmgr.DefaultLimitConfig {
 	defaultLimits := rcmgr.DefaultLimits.WithSystemMemory(.125, 1<<30, 4<<30)
 
 	// Do we need to adjust due to Swarm.ConnMgr.HighWater?
-	if cfg.ConnMgr.Type == "basic" {
-		maxconns := cfg.ConnMgr.HighWater
+	if cfg.ConnMgr.Type.WithDefault(config.DefaultConnMgrType) == config.DefaultConnMgrType {
+		maxconns := int(cfg.ConnMgr.HighWater.WithDefault(config.DefaultConnMgrHighWater))
 		if 2*maxconns > defaultLimits.SystemBaseLimit.ConnsInbound {
 			// adjust conns to 2x to allow for two conns per peer (TCP+QUIC)
 			defaultLimits.SystemBaseLimit.ConnsInbound = logScale(2 * maxconns)

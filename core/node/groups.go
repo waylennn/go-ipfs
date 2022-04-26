@@ -47,22 +47,19 @@ func LibP2P(bcfg *BuildCfg, cfg *config.Config) fx.Option {
 
 	connmgr := fx.Options()
 
-	if cfg.Swarm.ConnMgr.Type != "none" {
-		switch cfg.Swarm.ConnMgr.Type {
+	connMgrType := cfg.Swarm.ConnMgr.Type.WithDefault(config.DefaultConnMgrType)
+	if connMgrType != "none" {
+		switch connMgrType {
 		case "":
 			// 'default' value is the basic connection manager
 			break
 		case "basic":
-			var err error
-			grace, err = time.ParseDuration(cfg.Swarm.ConnMgr.GracePeriod)
-			if err != nil {
-				return fx.Error(fmt.Errorf("parsing Swarm.ConnMgr.GracePeriod: %s", err))
-			}
+			grace = cfg.Swarm.ConnMgr.GracePeriod.WithDefault(config.DefaultConnMgrGracePeriod)
 
-			low = cfg.Swarm.ConnMgr.LowWater
-			high = cfg.Swarm.ConnMgr.HighWater
+			low = int(cfg.Swarm.ConnMgr.LowWater.WithDefault(config.DefaultConnMgrLowWater))
+			high = int(cfg.Swarm.ConnMgr.HighWater.WithDefault(config.DefaultConnMgrHighWater))
 		default:
-			return fx.Error(fmt.Errorf("unrecognized ConnMgr.Type: %q", cfg.Swarm.ConnMgr.Type))
+			return fx.Error(fmt.Errorf("unrecognized ConnMgr.Type: %q", connMgrType))
 		}
 
 		connmgr = fx.Provide(libp2p.ConnectionManager(low, high, grace))
