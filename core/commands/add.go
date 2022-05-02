@@ -13,6 +13,8 @@ import (
 	"github.com/cheggaaa/pb"
 	cmds "github.com/ipfs/go-ipfs-cmds"
 	files "github.com/ipfs/go-ipfs-files"
+	ipld "github.com/ipfs/go-ipld-format"
+	mfs "github.com/ipfs/go-mfs"
 	coreiface "github.com/ipfs/interface-go-ipfs-core"
 	"github.com/ipfs/interface-go-ipfs-core/options"
 	mh "github.com/multiformats/go-multihash"
@@ -45,6 +47,7 @@ const (
 	hashOptionName        = "hash"
 	inlineOptionName      = "inline"
 	inlineLimitOptionName = "inline-limit"
+	toFilesOptionName     = "to-files"
 )
 
 const adderOutChanSize = 8
@@ -140,6 +143,7 @@ only-hash, and progress/status related flags) will change the final hash.
 		cmds.StringOption(hashOptionName, "Hash function to use. Implies CIDv1 if not sha2-256. (experimental)").WithDefault("sha2-256"),
 		cmds.BoolOption(inlineOptionName, "Inline small blocks into CIDs. (experimental)"),
 		cmds.IntOption(inlineLimitOptionName, "Maximum block size to inline. (experimental)").WithDefault(32),
+		cmds.StringOption(toFilesOptionName, "MFS path to copy the added CID to."),
 	},
 	PreRun: func(req *cmds.Request, env cmds.Environment) error {
 		quiet, _ := req.Options[quietOptionName].(bool)
@@ -180,6 +184,7 @@ only-hash, and progress/status related flags) will change the final hash.
 		hashFunStr, _ := req.Options[hashOptionName].(string)
 		inline, _ := req.Options[inlineOptionName].(bool)
 		inlineLimit, _ := req.Options[inlineLimitOptionName].(int)
+		toFilesStr, toFilesSet := req.Options[toFilesOptionName].(string)
 
 		hashFunCode, ok := mh.Names[strings.ToLower(hashFunStr)]
 		if !ok {
@@ -196,6 +201,39 @@ only-hash, and progress/status related flags) will change the final hash.
 			toadd = files.NewSliceDirectory([]files.DirEntry{
 				files.FileEntry("", req.Files),
 			})
+		}
+
+		ipfsNode, err := cmdenv.GetNode(env)
+		if err != nil {
+			return err
+		}
+		toFilesDst := ""
+		if toFilesSet {
+			dirIterator := toadd.Entries()
+			if !dirIterator.Next() {
+				if dirIterator.Err() != nil {
+					return dirIterator.Err()
+				}
+				return fmt.Errorf("no file entry to copy to MFS path %s", toFilesStr)
+			}
+			srcName := dirIterator.Name()
+			if dirIterator.Next() {
+				return fmt.Errorf("more than one entry to copy to MFS path %s: %s and %s", toFilesStr, srcName, dirIterator.Name())
+			}
+
+			toFilesDst, err = checkPath(toFilesStr)
+			if err != nil {
+				return err
+			}
+
+			if toFilesDst[len(toFilesDst)-1] == '/' {
+				toFilesDst += path.Base(srcName)
+			}
+
+			_, err = mfs.Lookup(ipfsNode.FilesRoot, path.Dir(toFilesDst))
+			if err != nil {
+				return fmt.Errorf("MFS destination directory %s does not exist: %s", path.Dir(toFilesDst), err)
+			}
 		}
 
 		opts := []options.UnixfsAddOption{
@@ -240,7 +278,23 @@ only-hash, and progress/status related flags) will change the final hash.
 			go func() {
 				var err error
 				defer close(events)
-				_, err = api.Unixfs().Add(req.Context, addit.Node(), opts...)
+				pathAdded, err := api.Unixfs().Add(req.Context, addit.Node(), opts...)
+				if err != nil {
+					errCh <- err
+					return
+				}
+				if toFilesSet {
+					var nodeAdded ipld.Node
+					nodeAdded, err = api.Dag().Get(req.Context, pathAdded.Cid())
+					if err != nil {
+						errCh <- err
+						return
+					}
+					err = mfs.PutNode(ipfsNode.FilesRoot, toFilesDst, nodeAdded)
+					if err != nil {
+						err = fmt.Errorf("cannot put node in path %s: %s", toFilesDst, err)
+					}
+				}
 				errCh <- err
 			}()
 
