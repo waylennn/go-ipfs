@@ -9,7 +9,7 @@ import (
 	"io/ioutil"
 	"time"
 
-	cmdenv "github.com/ipfs/go-ipfs/core/commands/cmdenv"
+	cmdenv "github.com/ipfs/ipfs-banana/core/commands/cmdenv"
 
 	cid "github.com/ipfs/go-cid"
 	cmds "github.com/ipfs/go-ipfs-cmds"

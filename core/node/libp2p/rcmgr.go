@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	config "github.com/ipfs/go-ipfs/config"
-	"github.com/ipfs/go-ipfs/repo"
+	config "github.com/ipfs/ipfs-banana/config"
+	"github.com/ipfs/ipfs-banana/repo"
 
 	"github.com/libp2p/go-libp2p"
 	"github.com/libp2p/go-libp2p-core/network"

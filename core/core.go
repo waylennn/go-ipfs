@@ -43,15 +43,15 @@ import (
 	ma "github.com/multiformats/go-multiaddr"
 	madns "github.com/multiformats/go-multiaddr-dns"
 
-	"github.com/ipfs/go-ipfs/core/bootstrap"
-	"github.com/ipfs/go-ipfs/core/node"
-	"github.com/ipfs/go-ipfs/core/node/libp2p"
-	"github.com/ipfs/go-ipfs/fuse/mount"
-	"github.com/ipfs/go-ipfs/p2p"
-	"github.com/ipfs/go-ipfs/peering"
-	"github.com/ipfs/go-ipfs/repo"
 	"github.com/ipfs/go-namesys"
 	ipnsrp "github.com/ipfs/go-namesys/republisher"
+	"github.com/ipfs/ipfs-banana/core/bootstrap"
+	"github.com/ipfs/ipfs-banana/core/node"
+	"github.com/ipfs/ipfs-banana/core/node/libp2p"
+	"github.com/ipfs/ipfs-banana/fuse/mount"
+	"github.com/ipfs/ipfs-banana/p2p"
+	"github.com/ipfs/ipfs-banana/peering"
+	"github.com/ipfs/ipfs-banana/repo"
 )
 
 var log = logging.Logger("core")

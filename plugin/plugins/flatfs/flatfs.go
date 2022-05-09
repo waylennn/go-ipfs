@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/ipfs/go-ipfs/plugin"
-	"github.com/ipfs/go-ipfs/repo"
-	"github.com/ipfs/go-ipfs/repo/fsrepo"
+	"github.com/ipfs/ipfs-banana/plugin"
+	"github.com/ipfs/ipfs-banana/repo"
+	"github.com/ipfs/ipfs-banana/repo/fsrepo"
 
 	flatfs "github.com/ipfs/go-ds-flatfs"
 )

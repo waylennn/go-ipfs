@@ -39,10 +39,10 @@ import (
 	record "github.com/libp2p/go-libp2p-record"
 	madns "github.com/multiformats/go-multiaddr-dns"
 
-	"github.com/ipfs/go-ipfs/core"
-	"github.com/ipfs/go-ipfs/core/node"
-	"github.com/ipfs/go-ipfs/repo"
 	"github.com/ipfs/go-namesys"
+	"github.com/ipfs/ipfs-banana/core"
+	"github.com/ipfs/ipfs-banana/core/node"
+	"github.com/ipfs/ipfs-banana/repo"
 )
 
 type CoreAPI struct {

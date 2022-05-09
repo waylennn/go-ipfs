@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	humanize "github.com/dustin/go-humanize"
-	"github.com/ipfs/go-ipfs/core"
-	"github.com/ipfs/go-ipfs/core/commands/cmdenv"
+	"github.com/ipfs/ipfs-banana/core"
+	"github.com/ipfs/ipfs-banana/core/commands/cmdenv"
 
 	bservice "github.com/ipfs/go-blockservice"
 	cid "github.com/ipfs/go-cid"

@@ -6,7 +6,7 @@ import (
 	"math/bits"
 	"strings"
 
-	config "github.com/ipfs/go-ipfs/config"
+	config "github.com/ipfs/ipfs-banana/config"
 	"github.com/libp2p/go-libp2p"
 	rcmgr "github.com/libp2p/go-libp2p-resource-manager"
 

@@ -6,9 +6,9 @@ package node
 import (
 	"errors"
 
-	core "github.com/ipfs/go-ipfs/core"
+	core "github.com/ipfs/ipfs-banana/core"
 )
 
 func Mount(node *core.IpfsNode, fsdir, nsdir string) error {
-	return errors.New("FUSE not supported on OpenBSD or NetBSD. See #5334 (https://github.com/ipfs/go-ipfs/issues/5334).")
+	return errors.New("FUSE not supported on OpenBSD or NetBSD. See #5334 (https://github.com/ipfs/ipfs-banana/issues/5334).")
 }

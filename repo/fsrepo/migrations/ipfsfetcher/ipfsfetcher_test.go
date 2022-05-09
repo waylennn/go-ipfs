@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/ipfs/go-ipfs/plugin/loader"
-	"github.com/ipfs/go-ipfs/repo/fsrepo/migrations"
+	"github.com/ipfs/ipfs-banana/plugin/loader"
+	"github.com/ipfs/ipfs-banana/repo/fsrepo/migrations"
 )
 
 func init() {

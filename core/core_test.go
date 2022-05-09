@@ -5,11 +5,11 @@ import (
 
 	context "context"
 
-	"github.com/ipfs/go-ipfs/repo"
+	"github.com/ipfs/ipfs-banana/repo"
 
 	datastore "github.com/ipfs/go-datastore"
 	syncds "github.com/ipfs/go-datastore/sync"
-	config "github.com/ipfs/go-ipfs/config"
+	config "github.com/ipfs/ipfs-banana/config"
 )
 
 func TestInitialization(t *testing.T) {

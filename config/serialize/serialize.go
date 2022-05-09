@@ -8,7 +8,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/ipfs/go-ipfs/config"
+	"github.com/ipfs/ipfs-banana/config"
 
 	"github.com/facebookgo/atomicfile"
 )

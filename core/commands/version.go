@@ -6,7 +6,7 @@ import (
 	"io"
 	"runtime/debug"
 
-	version "github.com/ipfs/go-ipfs"
+	version "github.com/ipfs/ipfs-banana"
 
 	cmds "github.com/ipfs/go-ipfs-cmds"
 )

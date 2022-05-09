@@ -9,15 +9,15 @@ import (
 	"strconv"
 	"strings"
 
-	version "github.com/ipfs/go-ipfs"
-	oldcmds "github.com/ipfs/go-ipfs/commands"
-	"github.com/ipfs/go-ipfs/core"
-	corecommands "github.com/ipfs/go-ipfs/core/commands"
+	version "github.com/ipfs/ipfs-banana"
+	oldcmds "github.com/ipfs/ipfs-banana/commands"
+	"github.com/ipfs/ipfs-banana/core"
+	corecommands "github.com/ipfs/ipfs-banana/core/commands"
 
 	cmds "github.com/ipfs/go-ipfs-cmds"
 	cmdsHttp "github.com/ipfs/go-ipfs-cmds/http"
-	config "github.com/ipfs/go-ipfs/config"
 	path "github.com/ipfs/go-path"
+	config "github.com/ipfs/ipfs-banana/config"
 )
 
 var (

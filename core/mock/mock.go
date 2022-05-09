@@ -5,15 +5,15 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	libp2p2 "github.com/ipfs/go-ipfs/core/node/libp2p"
+	libp2p2 "github.com/ipfs/ipfs-banana/core/node/libp2p"
 
-	"github.com/ipfs/go-ipfs/commands"
-	"github.com/ipfs/go-ipfs/core"
-	"github.com/ipfs/go-ipfs/repo"
+	"github.com/ipfs/ipfs-banana/commands"
+	"github.com/ipfs/ipfs-banana/core"
+	"github.com/ipfs/ipfs-banana/repo"
 
 	"github.com/ipfs/go-datastore"
 	syncds "github.com/ipfs/go-datastore/sync"
-	config "github.com/ipfs/go-ipfs/config"
+	config "github.com/ipfs/ipfs-banana/config"
 
 	"github.com/libp2p/go-libp2p"
 	"github.com/libp2p/go-libp2p-core/host"

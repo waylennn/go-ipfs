@@ -9,9 +9,9 @@ import (
 	"path"
 	"testing"
 
-	"github.com/ipfs/go-ipfs/thirdparty/unit"
+	"github.com/ipfs/ipfs-banana/thirdparty/unit"
 
-	config "github.com/ipfs/go-ipfs/config"
+	config "github.com/ipfs/ipfs-banana/config"
 	random "github.com/jbenet/go-random"
 )
 

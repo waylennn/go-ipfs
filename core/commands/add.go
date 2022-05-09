@@ -8,7 +8,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/ipfs/go-ipfs/core/commands/cmdenv"
+	"github.com/ipfs/ipfs-banana/core/commands/cmdenv"
 
 	"github.com/cheggaaa/pb"
 	cmds "github.com/ipfs/go-ipfs-cmds"

@@ -3,7 +3,7 @@ package libp2p
 import (
 	"time"
 
-	config "github.com/ipfs/go-ipfs/config"
+	config "github.com/ipfs/ipfs-banana/config"
 	"github.com/libp2p/go-libp2p"
 )
 

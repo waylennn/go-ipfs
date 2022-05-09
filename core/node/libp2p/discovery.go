@@ -11,7 +11,7 @@ import (
 
 	"go.uber.org/fx"
 
-	"github.com/ipfs/go-ipfs/core/node/helpers"
+	"github.com/ipfs/ipfs-banana/core/node/helpers"
 )
 
 const discoveryConnTimeout = time.Second * 30

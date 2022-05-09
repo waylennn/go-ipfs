@@ -5,8 +5,8 @@ import (
 	"sort"
 	"time"
 
-	version "github.com/ipfs/go-ipfs"
-	config "github.com/ipfs/go-ipfs/config"
+	version "github.com/ipfs/ipfs-banana"
+	config "github.com/ipfs/ipfs-banana/config"
 
 	logging "github.com/ipfs/go-log"
 	"github.com/libp2p/go-libp2p"

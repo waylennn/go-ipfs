@@ -13,12 +13,12 @@ import (
 	"time"
 
 	files "github.com/ipfs/go-ipfs-files"
-	"github.com/ipfs/go-ipfs/commands"
-	"github.com/ipfs/go-ipfs/config"
-	"github.com/ipfs/go-ipfs/core/commands/cmdenv"
-	"github.com/ipfs/go-ipfs/core/node/libp2p"
-	"github.com/ipfs/go-ipfs/repo"
-	"github.com/ipfs/go-ipfs/repo/fsrepo"
+	"github.com/ipfs/ipfs-banana/commands"
+	"github.com/ipfs/ipfs-banana/config"
+	"github.com/ipfs/ipfs-banana/core/commands/cmdenv"
+	"github.com/ipfs/ipfs-banana/core/node/libp2p"
+	"github.com/ipfs/ipfs-banana/repo"
+	"github.com/ipfs/ipfs-banana/repo/fsrepo"
 
 	cmds "github.com/ipfs/go-ipfs-cmds"
 	inet "github.com/libp2p/go-libp2p-core/network"

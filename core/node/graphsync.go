@@ -9,7 +9,7 @@ import (
 	libp2p "github.com/libp2p/go-libp2p-core"
 	"go.uber.org/fx"
 
-	"github.com/ipfs/go-ipfs/core/node/helpers"
+	"github.com/ipfs/ipfs-banana/core/node/helpers"
 )
 
 // Graphsync constructs a graphsync

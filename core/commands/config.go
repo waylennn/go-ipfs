@@ -10,13 +10,13 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/ipfs/go-ipfs/core/commands/cmdenv"
-	"github.com/ipfs/go-ipfs/repo"
-	"github.com/ipfs/go-ipfs/repo/fsrepo"
+	"github.com/ipfs/ipfs-banana/core/commands/cmdenv"
+	"github.com/ipfs/ipfs-banana/repo"
+	"github.com/ipfs/ipfs-banana/repo/fsrepo"
 
 	"github.com/elgris/jsondiff"
 	cmds "github.com/ipfs/go-ipfs-cmds"
-	config "github.com/ipfs/go-ipfs/config"
+	config "github.com/ipfs/ipfs-banana/config"
 )
 
 // ConfigUpdateOutput is config profile apply command's output

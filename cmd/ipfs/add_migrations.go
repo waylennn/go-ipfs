@@ -10,13 +10,13 @@ import (
 	"path/filepath"
 
 	files "github.com/ipfs/go-ipfs-files"
-	"github.com/ipfs/go-ipfs/core"
-	"github.com/ipfs/go-ipfs/core/coreapi"
-	"github.com/ipfs/go-ipfs/repo/fsrepo/migrations"
-	"github.com/ipfs/go-ipfs/repo/fsrepo/migrations/ipfsfetcher"
 	coreiface "github.com/ipfs/interface-go-ipfs-core"
 	"github.com/ipfs/interface-go-ipfs-core/options"
 	ipath "github.com/ipfs/interface-go-ipfs-core/path"
+	"github.com/ipfs/ipfs-banana/core"
+	"github.com/ipfs/ipfs-banana/core/coreapi"
+	"github.com/ipfs/ipfs-banana/repo/fsrepo/migrations"
+	"github.com/ipfs/ipfs-banana/repo/fsrepo/migrations/ipfsfetcher"
 	"github.com/libp2p/go-libp2p-core/peer"
 )
 
@@ -37,7 +37,7 @@ func addMigrations(ctx context.Context, node *core.IpfsNode, fetcher migrations.
 			if err != nil {
 				return err
 			}
-		case *migrations.HttpFetcher, *migrations.RetryFetcher: // https://github.com/ipfs/go-ipfs/issues/8780
+		case *migrations.HttpFetcher, *migrations.RetryFetcher: // https://github.com/ipfs/ipfs-banana/issues/8780
 			// Add the downloaded migration files directly
 			if migrations.DownloadDirectory != "" {
 				var paths []string

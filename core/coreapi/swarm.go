@@ -5,8 +5,8 @@ import (
 	"sort"
 	"time"
 
-	"github.com/ipfs/go-ipfs/tracing"
 	coreiface "github.com/ipfs/interface-go-ipfs-core"
+	"github.com/ipfs/ipfs-banana/tracing"
 	inet "github.com/libp2p/go-libp2p-core/network"
 	peer "github.com/libp2p/go-libp2p-core/peer"
 	pstore "github.com/libp2p/go-libp2p-core/peerstore"

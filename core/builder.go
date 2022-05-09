@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ipfs/go-ipfs/core/bootstrap"
-	"github.com/ipfs/go-ipfs/core/node"
+	"github.com/ipfs/ipfs-banana/core/bootstrap"
+	"github.com/ipfs/ipfs-banana/core/node"
 
 	"github.com/ipfs/go-metrics-interface"
 	"go.uber.org/dig"

@@ -7,10 +7,10 @@ import (
 	"sort"
 	"time"
 
-	"github.com/ipfs/go-ipfs/core/node/helpers"
+	"github.com/ipfs/ipfs-banana/core/node/helpers"
 
-	config "github.com/ipfs/go-ipfs/config"
-	"github.com/ipfs/go-ipfs/repo"
+	config "github.com/ipfs/ipfs-banana/config"
+	"github.com/ipfs/ipfs-banana/repo"
 	"github.com/libp2p/go-libp2p-core/host"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/routing"

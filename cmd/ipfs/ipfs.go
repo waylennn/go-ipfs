@@ -1,7 +1,7 @@
 package main
 
 import (
-	commands "github.com/ipfs/go-ipfs/core/commands"
+	commands "github.com/ipfs/ipfs-banana/core/commands"
 
 	cmds "github.com/ipfs/go-ipfs-cmds"
 )

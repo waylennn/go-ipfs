@@ -7,10 +7,10 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/ipfs/go-ipfs/plugin/loader"
-	"github.com/ipfs/go-ipfs/repo/fsrepo"
+	"github.com/ipfs/ipfs-banana/plugin/loader"
+	"github.com/ipfs/ipfs-banana/repo/fsrepo"
 
-	"github.com/ipfs/go-ipfs/config"
+	"github.com/ipfs/ipfs-banana/config"
 )
 
 // note: to test sorting of the mountpoints in the disk spec they are

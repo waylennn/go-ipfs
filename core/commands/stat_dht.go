@@ -6,7 +6,7 @@ import (
 	"text/tabwriter"
 	"time"
 
-	cmdenv "github.com/ipfs/go-ipfs/core/commands/cmdenv"
+	cmdenv "github.com/ipfs/ipfs-banana/core/commands/cmdenv"
 
 	cmds "github.com/ipfs/go-ipfs-cmds"
 	"github.com/libp2p/go-libp2p-core/network"

@@ -8,14 +8,14 @@ import (
 	"runtime"
 	"strings"
 
-	config "github.com/ipfs/go-ipfs/config"
-	cserialize "github.com/ipfs/go-ipfs/config/serialize"
+	config "github.com/ipfs/ipfs-banana/config"
+	cserialize "github.com/ipfs/ipfs-banana/config/serialize"
 	"github.com/ipld/go-ipld-prime/multicodec"
 
-	"github.com/ipfs/go-ipfs/core"
-	"github.com/ipfs/go-ipfs/core/coreapi"
-	plugin "github.com/ipfs/go-ipfs/plugin"
-	fsrepo "github.com/ipfs/go-ipfs/repo/fsrepo"
+	"github.com/ipfs/ipfs-banana/core"
+	"github.com/ipfs/ipfs-banana/core/coreapi"
+	plugin "github.com/ipfs/ipfs-banana/plugin"
+	fsrepo "github.com/ipfs/ipfs-banana/repo/fsrepo"
 
 	logging "github.com/ipfs/go-log"
 	opentracing "github.com/opentracing/opentracing-go"

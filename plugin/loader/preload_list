@@ -3,10 +3,10 @@
 #
 # name             go-path                  number of the sub-plugin or *
 
-ipldgit github.com/ipfs/go-ipfs/plugin/plugins/git *
-iplddagjose github.com/ipfs/go-ipfs/plugin/plugins/dagjose *
+ipldgit github.com/ipfs/ipfs-banana/plugin/plugins/git *
+iplddagjose github.com/ipfs/ipfs-banana/plugin/plugins/dagjose *
 
-badgerds github.com/ipfs/go-ipfs/plugin/plugins/badgerds *
-flatfs github.com/ipfs/go-ipfs/plugin/plugins/flatfs *
-levelds github.com/ipfs/go-ipfs/plugin/plugins/levelds *
-peerlog github.com/ipfs/go-ipfs/plugin/plugins/peerlog *
+badgerds github.com/ipfs/ipfs-banana/plugin/plugins/badgerds *
+flatfs github.com/ipfs/ipfs-banana/plugin/plugins/flatfs *
+levelds github.com/ipfs/ipfs-banana/plugin/plugins/levelds *
+peerlog github.com/ipfs/ipfs-banana/plugin/plugins/peerlog *

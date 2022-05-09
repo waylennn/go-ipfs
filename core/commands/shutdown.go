@@ -2,7 +2,7 @@ package commands
 
 import (
 	cmds "github.com/ipfs/go-ipfs-cmds"
-	cmdenv "github.com/ipfs/go-ipfs/core/commands/cmdenv"
+	cmdenv "github.com/ipfs/ipfs-banana/core/commands/cmdenv"
 )
 
 var daemonShutdownCmd = &cmds.Command{

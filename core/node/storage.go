@@ -3,13 +3,13 @@ package node
 import (
 	"github.com/ipfs/go-datastore"
 	blockstore "github.com/ipfs/go-ipfs-blockstore"
-	config "github.com/ipfs/go-ipfs/config"
+	config "github.com/ipfs/ipfs-banana/config"
 	"go.uber.org/fx"
 
 	"github.com/ipfs/go-filestore"
-	"github.com/ipfs/go-ipfs/core/node/helpers"
-	"github.com/ipfs/go-ipfs/repo"
-	"github.com/ipfs/go-ipfs/thirdparty/verifbs"
+	"github.com/ipfs/ipfs-banana/core/node/helpers"
+	"github.com/ipfs/ipfs-banana/repo"
+	"github.com/ipfs/ipfs-banana/thirdparty/verifbs"
 )
 
 // RepoConfig loads configuration from the repo
