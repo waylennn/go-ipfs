@@ -15,6 +15,17 @@ import (
 	"go.uber.org/fx"
 )
 
+type fxOptFunc func([]fx.Option) ([]fx.Option, error)
+
+var fxOptionFuncs []fxOptFunc
+
+// RegisterFXOptionFunc registers a function that is run before the fx app is initialized,
+// with the list of all fx options that will be passed during initialization, and that
+// returns a new list of all fx options.
+func RegisterFXOptionFunc(optFunc fxOptFunc) {
+	fxOptionFuncs = append(fxOptionFuncs, optFunc)
+}
+
 // from https://stackoverflow.com/a/59348871
 type valueContext struct {
 	context.Context
@@ -41,12 +52,21 @@ func NewNode(ctx context.Context, cfg *BuildCfg) (*IpfsNode, error) {
 		ctx: ctx,
 	}
 
-	app := fx.New(
+	opts := []fx.Option{
 		node.IPFS(ctx, cfg),
-
 		fx.NopLogger,
-		fx.Extract(n),
-	)
+	}
+	for _, optFunc := range fxOptionFuncs {
+		var err error
+		opts, err = optFunc(opts)
+		if err != nil {
+			cancel()
+			return nil, fmt.Errorf("building fx opts: %w", err)
+		}
+	}
+	opts = append(opts, fx.Extract(n))
+
+	app := fx.New(opts...)
 
 	var once sync.Once
 	var stopErr error
