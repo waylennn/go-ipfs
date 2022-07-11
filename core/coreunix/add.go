@@ -61,6 +61,7 @@ func NewAdder(ctx context.Context, p pin.Pinner, bs bstore.GCLocker, ds ipld.DAG
 }
 
 // Adder holds the switches passed to the `add` command.
+//  持有传递给`add`命令的开关
 type Adder struct {
 	ctx        context.Context
 	pinning    pin.Pinner
@@ -116,6 +117,8 @@ func (adder *Adder) add(reader io.Reader) (ipld.Node, error) {
 		CidBuilder: adder.CidBuilder,
 	}
 
+	// 从给定的参数和给定的chunker.Splitter作为数据源，生成一个新的DagBuilderHelper
+	// DagBuilderHelper 封装了一堆对象，需要用于有效地创建unixfs(文件单元) dag树
 	db, err := params.New(chnk)
 	if err != nil {
 		return nil, err
@@ -396,6 +399,7 @@ func (adder *Adder) addSymlink(path string, l *files.Symlink) error {
 func (adder *Adder) addFile(path string, file files.File) error {
 	// if the progress flag was specified, wrap the file so that we can send
 	// progress updates to the client (over the output channel)
+	// 如果指定了进度标志，就把文件包起来，这样我们就可以向客户端发送进度更新（通过输出通道)
 	var reader io.Reader = file
 	if adder.Progress {
 		rdr := &progressReader{file: reader, path: path, out: adder.Out}
@@ -412,6 +416,7 @@ func (adder *Adder) addFile(path string, file files.File) error {
 	}
 
 	// patch it into the root
+	// 补到根节点
 	return adder.addNode(dagnode, path)
 }
 
