@@ -293,6 +293,9 @@ type FSNodeOverDag struct {
 // decoupled from one onther (and will continue in that way until
 // `Commit` is called), with `fsNodeType` specifying the type of
 // the UnixFS layer node (either `File` or `Raw`).
+// NewFSNodeOverDag创建一个新的`dag.ProtoNode'和`ft.FSNode'，
+// 彼此解耦（并将以这种方式持续到`Commit'被调用），
+// `fsNodeType'指定UnixFS层节点的类型（`文件'或`Raw'）
 func (db *DagBuilderHelper) NewFSNodeOverDag(fsNodeType pb.Data_DataType) *FSNodeOverDag {
 	node := new(FSNodeOverDag)
 	node.dag = new(dag.ProtoNode)

@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b65be89d-acec-4830-a705-c72bc422557c" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/go-ipfs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/go-ipfs.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/helpers/dagbuilder.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/helpers/dagbuilder.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,6 +188,11 @@
           <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-ipld-format/batch.go</url>
           <line>100</line>
           <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go</url>
+          <line>149</line>
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
