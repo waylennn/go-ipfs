@@ -282,7 +282,22 @@ func (db *DagBuilderHelper) Maxlinks() int {
 //
 // It aims to replace the `UnixfsNode` structure which encapsulated too
 // many possible node state combinations.
+// FSNodeOverDag封装了一个`unixfs.FSNode`，它将被存储在一个
+// `dag.ProtoNode`。而不是只有一个`ipld.Node`，该节点
+// 而不是只有一个 "ipld.Node"，它需要不断地被打包以访问和修改其
+// 在创建UnixFS DAG的过程中，这个结构存储了一个`FSNode'。
+// 结构存储了一个`FSNode`缓存来操作它（添加子节点）。
+// 直接操作它（添加子节点），并且只有当节点达到最终（不可变）状态时
+// (通过调用 `Commit()'发出信号)，才会被提交到一个单一的(不可分割的)
+// `ipld.Node`。
 //
+// 它主要用于内部（非叶子）节点，以及一些
+// 数据叶节点的代表（不使用原始节点或
+// Filestore）。
+//
+// 它的目的是取代 "UnixfsNode "结构，该结构封装了太多的
+// 许多可能的节点状态组合。
+
 // TODO: Revisit the name.
 type FSNodeOverDag struct {
 	dag  *dag.ProtoNode
@@ -329,6 +344,10 @@ func NewFSNFromDag(nd *dag.ProtoNode) (*FSNodeOverDag, error) {
 // `ft.FSNode` stores its file size (that is, not the size of the
 // node but the size of the file data that it is storing at the
 // UnixFS layer). The child is also stored in the `DAGService`.
+//  AddChild 在两个节点层中添加一个`child`,`ipld.Node`。
+// `dag.ProtoNode`创建一个指向子节点的链接，而`ft.FSNode`存储其文件大小（
+// 也就是说，不是节点的大小，而是它在UnixFS层存储的文件数据大小）。
+// 该子节点也被存储在`DAGService`中。
 func (n *FSNodeOverDag) AddChild(child ipld.Node, fileSize uint64, db *DagBuilderHelper) error {
 	err := n.dag.AddNodeLink("", child)
 	if err != nil {

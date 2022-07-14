@@ -72,6 +72,7 @@ func (ns NodeStat) String() string {
 }
 
 // MakeLink creates a link to the given node
+// 创建一个指向给定节点的链接
 func MakeLink(n Node) (*Link, error) {
 	s, err := n.Size()
 	if err != nil {

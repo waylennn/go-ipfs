@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b65be89d-acec-4830-a705-c72bc422557c" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-ipld-format/format.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-ipld-format/format.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-merkledag/node.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-merkledag/node.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/helpers/dagbuilder.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/helpers/dagbuilder.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +24,7 @@
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-ipfs-cmds@v0.8.1/command.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-ipfs-cmds@v0.8.1/http/handler.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-ipld-format@v0.4.0/merkledag.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-merkledag@v0.6.0/node.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-unixfs@v0.3.1/importer/balanced/builder.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-unixfs@v0.3.1/importer/helpers/dagbuilder.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-unixfs@v0.3.1/importer/helpers/helpers.go" root0="SKIP_INSPECTION" />
@@ -30,6 +33,12 @@
     <setting file="file://$PROJECT_DIR$/core/coreapi/unixfs.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/core/corehttp/commands.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/core/coreunix/add.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/vendor/github.com/ipfs/go-block-format/blocks.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/vendor/github.com/ipfs/go-ipfs-chunker/parse.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/vendor/github.com/ipfs/go-ipld-format/format.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/vendor/github.com/ipfs/go-merkledag/node.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/helpers/dagbuilder.go" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -193,6 +202,16 @@
           <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go</url>
           <line>149</line>
           <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go</url>
+          <line>162</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-ipld-format/format.go</url>
+          <line>76</line>
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
