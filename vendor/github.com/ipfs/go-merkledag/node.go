@@ -40,20 +40,13 @@ type immutableProtoNode struct {
 // For the time being however, go-unixfsnode is read only and
 // this mutable protonode implementation is needed to support go-unixfs,
 // the only library that implements both read and write for UnixFS v1
-// // ProtoNode代表IPFS Merkle DAG中的一个节点。
-//// 节点有不透明的数据和一组可导航的链接。
-//// ProtoNode是一个go-ipld-legacy.UniversalNode，意味着它既是
-//// 一个go-ipld-prime节点和一个go-ipld-format节点。
-//// ProtoNode与它的原始实现保持兼容
-//// 作为一个仅有go-ipld格式的节点，它包括一些可变性，即
-//// 能够在原地添加/删除链接
-////
-//// TODO: 我们应该能够最终用以下方法取代这个实现
-//// * go-codec-dagpb用于基本的DagPB编码/解码到go-ipld-prime。
-//// * go-unixfsnode ADLs用于更高级别的DAGPB功能
-//// 然而，目前 go-unixfsnode 是只读的，并且
-//// 这个易变的质子节点实现需要支持go-unixfs。
-//// 这是唯一一个为UnixFS v1实现读和写的库。
+/*
+ProtoNode代表IPFS Merkle DAG中的一个节点。节点有不透明的数据和一组可导航的链接。
+ProtoNode是一个go-ipld-legacy.UniversalNode，意味着它既是一个go-ipld-prime节点，也是一个go-ipld-format节点。
+ProtoNode与它作为go-ipld-format唯一节点的原始实现保持兼容，其中包括一些可变性，即能够在原地添加/删除链接。
+TODO: 我们最终应该能够用* go-codec-dagpb来取代这个实现，以实现基本的DagPB编码/解码到go-ipld-prime * go-unixfsnode ADLs，
+以实现更高级别的DAGPB功能 然而目前，go-unixfsnode是只读的，这个可变的protonode实现需要支持go-unixfs，这是唯一实现UnixFS v1读写的库。
+ */
 type ProtoNode struct {
 	links []*format.Link
 	data  []byte
