@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b65be89d-acec-4830-a705-c72bc422557c" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/core/coreunix/add.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/coreunix/add.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/go-ipfs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/go-ipfs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +22,8 @@
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-ipfs-chunker@v0.0.5/parse.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-ipfs-cmds@v0.8.1/command.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-ipfs-cmds@v0.8.1/http/handler.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-ipld-format@v0.4.0/merkledag.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-unixfs@v0.3.1/importer/balanced/builder.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-unixfs@v0.3.1/importer/helpers/dagbuilder.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-unixfs@v0.3.1/importer/helpers/helpers.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/rs/cors@v1.7.0/cors.go" root0="SKIP_INSPECTION" />
@@ -58,6 +62,14 @@
   }
 }</component>
   <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="go-ipfs" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build github.com/ipfs/go-ipfs/cmd/ipfs" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-ipfs" />
       <working_directory value="$PROJECT_DIR$" />
@@ -66,6 +78,15 @@
       <package value="github.com/ipfs/go-ipfs/cmd/ipfs" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/cmd/ipfs/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="go-ipfs" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -136,11 +157,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/core/coreunix/add.go</url>
-          <line>402</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/core/coreunix/add.go</url>
           <line>412</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
@@ -156,11 +172,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/core/coreunix/add.go</url>
-          <line>106</line>
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/core/coreunix/add.go</url>
           <line>264</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
@@ -170,13 +181,13 @@
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$USER_HOME$/go/pkg/mod/github.com/ipfs/go-unixfs@v0.3.1/importer/balanced/builder.go</url>
-          <line>156</line>
+          <url>file://$PROJECT_DIR$/core/coreunix/add.go</url>
+          <line>129</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/core/coreunix/add.go</url>
-          <line>404</line>
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-ipld-format/batch.go</url>
+          <line>100</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
