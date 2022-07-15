@@ -9,7 +9,7 @@
 *.test
 *.orig
 *~
-
+.idea
 coverage.txt
 gx-workspace-update.json
 
