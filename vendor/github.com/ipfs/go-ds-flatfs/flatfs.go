@@ -631,7 +631,7 @@ func (fs *Datastore) putMany(data map[datastore.Key][]byte) error {
 		removed++
 	}
 
-	// now sync the dirs for those files
+	// now sync the dirs for those files /现在同步这些文件的目录
 	if fs.sync {
 		for dir := range dirsToSync {
 			if err := syncDir(dir); err != nil {
