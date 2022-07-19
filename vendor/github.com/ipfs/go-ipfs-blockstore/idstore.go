@@ -9,7 +9,7 @@ import (
 	mh "github.com/multiformats/go-multihash"
 )
 
-// idstore wraps a BlockStore to add support for identity hashes
+// idstore wraps a BlockStore to add support for identity hashes 包裹一个BlockStore，以增加对身份哈希的支持
 type idstore struct {
 	bs     Blockstore
 	viewer Viewer
@@ -28,7 +28,7 @@ func NewIdStore(bs Blockstore) Blockstore {
 }
 
 func extractContents(k cid.Cid) (bool, []byte) {
-	// Pre-check by calling Prefix(), this much faster than extracting the hash.
+	// Pre-check by calling Prefix(), this much faster than extracting the hash. 通过调用Prefix()进行预检查，这比提取哈希值快得多。
 	if k.Prefix().MhType != mh.IDENTITY {
 		return false, nil
 	}

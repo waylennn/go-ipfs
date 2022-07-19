@@ -132,6 +132,7 @@ func (n *ProtoNode) GetPBNode() *pb.PBNode {
 
 // EncodeProtobuf returns the encoded raw data version of a Node instance.
 // It may use a cached encoded version, unless the force flag is given.
+// 返回一个Node实例的原始数据编码版本。 它可能会使用一个缓存的编码版本，除非给出强制标志
 func (n *ProtoNode) EncodeProtobuf(force bool) ([]byte, error) {
 	sort.Stable(LinkSlice(n.links)) // keep links sorted
 	if n.encoded == nil || force {

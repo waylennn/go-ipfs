@@ -24,6 +24,9 @@ type lock struct {
 // does not store the actual blocks, just metadata about them: existence and
 // size. This provides block access-time improvements, allowing
 // to short-cut many searches without querying the underlying datastore.
+// arccache用一个自适应替换缓存（ARC）来包装BlockStore。
+// 不存储实际的块，只存储关于它们的元数据：存在和 大小。
+// 这提供了区块访问时间的改进，允许 在不查询底层数据存储的情况下缩短许多搜索时间。
 type arccache struct {
 	lklk sync.Mutex
 	lks  map[string]*lock
@@ -315,6 +318,8 @@ func (b *arccache) PutMany(ctx context.Context, bs []blocks.Block) error {
 	for _, blk := range bs {
 		// call put on block if result is inconclusive or we are sure that
 		// the block isn't in storage
+		// 如果结果是不确定的，或者我们确定区块不在存储区，则调用put。
+		// 该区块不在仓库中
 		key := cacheKey(blk.Cid())
 		if has, _, ok := b.queryCache(key); !ok || (ok && !has) {
 			good.append(key, blk)

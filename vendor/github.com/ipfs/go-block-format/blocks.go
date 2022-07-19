@@ -17,6 +17,7 @@ import (
 var ErrWrongHash = errors.New("data did not match given hash")
 
 // Block provides abstraction for blocks implementations.
+// 为块的实现提供抽象
 type Block interface {
 	RawData() []byte
 	Cid() cid.Cid

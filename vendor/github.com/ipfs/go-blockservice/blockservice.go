@@ -38,6 +38,7 @@ type BlockGetter interface {
 // BlockService is a hybrid block datastore. It stores data in a local
 // datastore and may retrieve data from a remote Exchange.
 // It uses an internal `datastore.Datastore` instance to store values.
+// 是一个混合块数据存储。它在本地数据存储中存储数据，并可能从远程Exchange中检索数据。它使用一个内部的`datastore.Datastore`实例来存储数值
 type BlockService interface {
 	io.Closer
 	BlockGetter

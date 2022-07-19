@@ -349,6 +349,7 @@ func NewFSNFromDag(nd *dag.ProtoNode) (*FSNodeOverDag, error) {
 // 也就是说，不是节点的大小，而是它在UnixFS层存储的文件数据大小）。
 // 该子节点也被存储在`DAGService`中。
 func (n *FSNodeOverDag) AddChild(child ipld.Node, fileSize uint64, db *DagBuilderHelper) error {
+	// 根据node信息，提取并给dag的link结构体赋值(name,size,cid)
 	err := n.dag.AddNodeLink("", child)
 	if err != nil {
 		return err

@@ -109,17 +109,20 @@ func (t *Batch) asyncCommit() {
 }
 
 // Add adds a node to the batch and commits the batch if necessary.
+// 将一个节点添加到批处理中，并在必要时提交该批处理
 func (t *Batch) Add(ctx context.Context, nd Node) error {
 	return t.AddMany(ctx, []Node{nd})
 }
 
 // AddMany many calls Add for every given Node, thus batching and
 // commiting them as needed.
+// 为每个给定的节点多次调用Add，从而根据需要进行批处理和提交
 func (t *Batch) AddMany(ctx context.Context, nodes []Node) error {
 	if t.err != nil {
 		return t.err
 	}
 	// Not strictly necessary but allows us to catch errors early.
+	// 并非严格必要，但可以让我们及早发现错误
 	t.processResults()
 
 	if t.err != nil {
@@ -227,6 +230,8 @@ func MaxNodesBatchOption(num int) BatchOption {
 // BufferedDAG implements DAGService using a Batch NodeAdder to wrap add
 // operations in the given DAGService. It will trigger Commit() before any
 // non-Add operations, but otherwise calling Commit() is left to the user.
+// 缓冲DAG实现了DAGService，使用一个批量节点添加器来包装添加操作的DAGService。
+// 它将在任何非添加操作之前触发Commit()，但除此之外，调用Commit()是留给用户的
 type BufferedDAG struct {
 	ds DAGService
 	b  *Batch
