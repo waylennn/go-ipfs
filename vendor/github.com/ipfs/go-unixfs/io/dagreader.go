@@ -148,14 +148,24 @@ func (dr *dagReader) Read(b []byte) (int, error) {
 // attempts a full read of the DAG until the `out` buffer is full.
 // It uses the `Walker` structure to iterate the file DAG and read
 // every node's data into the `out` buffer.
+/*
+ 从DAG结构化文件中读取数据。它总是尝试对DAG进行全读，直到`out`缓冲区满。
+ 它使用`Walker`结构来迭代文件DAG并将每个节点的数据读入`out`缓冲区
+*/
 func (dr *dagReader) CtxReadFull(ctx context.Context, out []byte) (n int, err error) {
 	// Set the `dagWalker`'s context to the `ctx` argument, it will be used
 	// to fetch the child node promises (see
 	// `ipld.NavigableIPLDNode.FetchChild` for details).
+	/*
+		将`dagWalker'的上下文设置为`ctx'参数，它将被用来获取子节点的承诺（详见`ipld.NavigableIPLDNode.FetchChild`）
+	*/
 	dr.dagWalker.SetContext(ctx)
 
 	// If there was a partially read buffer from the last visited
 	// node read it before visiting a new one.
+	/*
+		如果在最后访问的节点上有一个部分读取的缓冲区 节点，请在访问新的节点前读取它
+	*/
 	if dr.currentNodeData != nil {
 		// TODO: Move this check inside `readNodeDataBuffer`?
 		n = dr.readNodeDataBuffer(out)
@@ -163,17 +173,20 @@ func (dr *dagReader) CtxReadFull(ctx context.Context, out []byte) (n int, err er
 		if n == len(out) {
 			return n, nil
 			// Output buffer full, no need to traverse the DAG.
+			// 输出缓冲区已满，不需要再遍历DAG
 		}
 	}
 
 	// Iterate the DAG calling the passed `Visitor` function on every node
 	// to read its data into the `out` buffer, stop if there is an error or
 	// if the entire DAG is traversed (`EndOfDag`).
+	// 遍历DAG，在每个节点上调用传递的 "Visitor "函数，将其数据读入 "out "缓冲区，如果出现错误或整个DAG被遍历（"EndOfDag"）则停止
 	err = dr.dagWalker.Iterate(func(visitedNode ipld.NavigableNode) error {
 		node := ipld.ExtractIPLDNode(visitedNode)
 
 		// Skip internal nodes, they shouldn't have any file data
 		// (see the `balanced` package for more details).
+		//  跳过内部节点，它们不应该有任何文件数据（更多细节见`平衡`包）
 		if len(node.Links()) > 0 {
 			return nil
 		}
@@ -186,14 +199,23 @@ func (dr *dagReader) CtxReadFull(ctx context.Context, out []byte) (n int, err er
 		// partially read now and future `CtxReadFull` calls reclaim the
 		// rest (as each node is visited only once during `Iterate`).
 		//
+		/* 将叶子节点文件数据保存在一个缓冲区中，以防现在只读到部分数据，
+		而未来的`CtxReadFull`调用会回收其余部分（因为每个节点在`Iterate`过程中只被访问一次）
+		*/
+
 		// TODO: We could check if the entire node's data can fit in the
 		// remaining `out` buffer free space to skip this intermediary step.
-
+		/*
+			我们可以检查整个节点的数据是否可以容纳在剩余的`出`缓冲区的空闲空间中，以跳过这个中间步骤
+		*/
 		n += dr.readNodeDataBuffer(out[n:])
 
 		if n == len(out) {
 			// Output buffer full, no need to keep traversing the DAG,
 			// signal the `Walker` to pause the iteration.
+			/*
+				输出缓冲区满了，不需要继续遍历DAG，向`Walker`发出信号，暂停迭代
+			*/
 			dr.dagWalker.Pause()
 		}
 

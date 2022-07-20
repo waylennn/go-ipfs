@@ -147,6 +147,7 @@ func Layout(db *h.DagBuilderHelper) (ipld.Node, error) {
 	// always be internal nodes (with a depth > 0) that can
 	// be handled by the loop.
 	//  第一个`root`将是一个带有数据的单叶结点 (角的情况），之后的`根'节点总是内部节点（深度>0），可以被循环处理。
+	/* 构建第一个根节点, 该根节点也包含data */
 	root, fileSize, err := db.NewLeafDataNode(ft.TFile)
 	if err != nil {
 		return nil, err
@@ -156,6 +157,8 @@ func Layout(db *h.DagBuilderHelper) (ipld.Node, error) {
 	// has reached its maximum capacity of `db.Maxlinks()` per node)
 	// extend it by making it a sub-DAG of a bigger DAG with `depth+1`.
 	// 每次某个深度的DAG被填满（因为它已经达到了每个节点的最大容量`db.Maxlinks()`），就把它扩展为一个深度为`1`的更大DAG的子DAG。
+	/* 如果只需要一个block，那么直接返回root即可 */
+	/* 否则，从depth开始构建 Merkle Tree,下面会详细描述该过程 */
 	for depth := 1; !db.Done(); depth++ {
 
 		// Add the old `root` as a child of the `newRoot`.

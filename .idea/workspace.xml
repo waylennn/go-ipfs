@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b65be89d-acec-4830-a705-c72bc422557c" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/coreunix/add.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/coreunix/add.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-ds-flatfs/flatfs.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-ds-flatfs/flatfs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/io/dagreader.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/io/dagreader.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +70,14 @@
   }
 }</component>
   <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="go-ipfs" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build github.com/ipfs/go-ipfs/cmd/ipfs" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-ipfs" />
       <working_directory value="$PROJECT_DIR$" />
@@ -78,6 +86,15 @@
       <package value="github.com/ipfs/go-ipfs/cmd/ipfs" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/cmd/ipfs/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="go-ipfs" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -156,6 +173,16 @@
           <line>136</line>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/core/commands/cat.go</url>
+          <line>38</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/io/dagreader.go</url>
+          <line>161</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -163,6 +190,7 @@
         <watch expression="*(*&quot;github.com/ipfs/go-ipfs-blockstore.gcBlockstore&quot;)(824644134080)" />
         <watch expression="*(*&quot;github.com/ipfs/go-merkledag.dagService&quot;)(824680045808)" />
         <watch expression="*(*&quot;[]github.com/ipfs/go-block-format.Block&quot;)(824675620936)" />
+        <watch expression="*(*&quot;github.com/ipfs/go-unixfs/importer/helpers.FSNodeOverDag&quot;)(824691894832)" />
       </configuration>
     </watches-manager>
   </component>
