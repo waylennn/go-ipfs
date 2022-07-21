@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b65be89d-acec-4830-a705-c72bc422557c" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-ipld-format/walker.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-ipld-format/walker.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/io/dagreader.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/io/dagreader.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/helpers/dagbuilder.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/helpers/dagbuilder.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/interface-go-ipfs-core/unixfs.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/interface-go-ipfs-core/unixfs.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,14 +72,6 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="go-ipfs" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
     <configuration name="go build github.com/ipfs/go-ipfs/cmd/ipfs" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-ipfs" />
       <working_directory value="$PROJECT_DIR$" />
@@ -86,15 +80,6 @@
       <package value="github.com/ipfs/go-ipfs/cmd/ipfs" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/cmd/ipfs/main.go" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="go-ipfs" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -169,19 +154,39 @@
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/core/coreunix/add.go</url>
-          <line>136</line>
-          <option name="timeStamp" value="100" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/core/commands/cat.go</url>
-          <line>38</line>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/io/dagreader.go</url>
           <line>161</line>
           <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-ipfs-cmds/http/responseemitter.go</url>
+          <line>132</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-ipfs-cmds/http/responseemitter.go</url>
+          <line>319</line>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go</url>
+          <line>165</line>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go</url>
+          <line>172</line>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-unixfs/importer/balanced/builder.go</url>
+          <line>132</line>
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/core/coreunix/add.go</url>
+          <line>136</line>
+          <option name="timeStamp" value="126" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

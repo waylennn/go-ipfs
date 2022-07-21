@@ -104,7 +104,7 @@ func (db *DagBuilderHelper) prepareNext() {
 	}
 }
 
-// Done returns whether or not we're done consuming the incoming data.
+// Done returns whether or not we're done consuming the incoming data. 返回我们是否已经完成了对传入数据的消费
 func (db *DagBuilderHelper) Done() bool {
 	// ensure we have an accurate perspective on data
 	// as `done` this may be called before `next`.
@@ -203,6 +203,13 @@ func (db *DagBuilderHelper) FillNodeLayer(node *FSNodeOverDag) error {
 // the DAG file size). The size of the data is computed here because
 // after that it will be hidden by `NewLeafNode` inside a generic
 // `ipld.Node` representation.
+/*
+ NewLeafDataNode用从分割器中获得的数据建立 "节点"。
+ 分割器中获得的数据，以及创建DagBuilderHelper时指定的约束条件（BlockSizeLimit, RawLeaves）。
+ 创建DagBuilderHelper时指定。它返回
+ `ipld.Node`与`dataSize`（将用于跟踪DAG文件大小）。
+DAG文件的大小）。数据的大小是在这里计算的，因为之后它将被`NewLeafNode`隐藏在一个通用的`ipld.Node`表示中
+*/
 func (db *DagBuilderHelper) NewLeafDataNode(fsNodeType pb.Data_DataType) (node ipld.Node, dataSize uint64, err error) {
 	fileData, err := db.Next()
 	if err != nil {
@@ -217,7 +224,7 @@ func (db *DagBuilderHelper) NewLeafDataNode(fsNodeType pb.Data_DataType) (node i
 	}
 
 	// Convert this leaf to a `FilestoreNode` if needed.
-	node = db.ProcessFileStore(node, dataSize)
+	node = db.ProcessFileStore(node, dataSize) //如果需要，将此叶子转换为 "文件存储节点"
 
 	return node, dataSize, nil
 }

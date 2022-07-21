@@ -187,20 +187,29 @@ var ErrNilVisitor = errors.New("no Visitor function specified")
 // inside the `Visitor` call or any other errors while fetching the child
 // nodes), the rest of the move errors are handled within the function and
 // are not returned.
+/*
+	通过DFS预排序行走算法对DAG进行迭代，尽可能往下走，然后`NextChild`到其他兄弟姐妹处，再往上走（再往下走）。
+	位置在整个迭代过程中被保存（可以在`Seek`中事先设置），允许`Iterate`被重复调用（在`Pause`之后）以继续迭代。
+	这个函数返回从`down`收到的错误（在`Visitor`调用中产生的，或者在获取子节点时产生的任何其他错误），其余的移动错误在函数中处理，不返回
+ */
 func (w *Walker) Iterate(visitor Visitor) error {
 
 	// Iterate until either: the end of the DAG (`errUpOnRoot`), a `Pause`
 	// is requested (`errPauseWalkOperation`) or an error happens (while
 	// going down).
+	/*
+		迭代到：DAG结束（`errUpOnRoot'），请求`暂停'（`errPauseWalkOperation'）或发生错误（下行时）。
+	*/
 	for {
 
-		// First, go down as much as possible.
+		// First, go down as much as possible. 首先，尽可能地往下走
 		for {
 			err := w.down(visitor)
 
 			if err == ErrDownNoChild {
 				break
 				// Can't keep going down from this node, try to move Next.
+				// 不能一直从这个节点往下走，试着移动到下一个
 			}
 
 			if err == errPauseWalkOperation {
@@ -218,6 +227,9 @@ func (w *Walker) Iterate(visitor Visitor) error {
 		// Can't move down anymore, turn to the next child in the `ActiveNode`
 		// to go down a different path. If there are no more child nodes
 		// available, go back up.
+		/*
+		  不能再往下走了，转向`活动节点`中的下一个子节点，走另一条路。如果没有更多的子节点可用，就往上走
+		 */
 		for {
 			err := w.NextChild()
 			if err == nil {
@@ -226,6 +238,7 @@ func (w *Walker) Iterate(visitor Visitor) error {
 			}
 
 			// It can't go Next (`ErrNextNoChild`), try to move up.
+			// 它不能进入下一步（`ErrNextNoChild`），尝试向上移动
 			err = w.up()
 			if err != nil {
 				// Can't move up, on the root again (`errUpOnRoot`).
@@ -236,7 +249,10 @@ func (w *Walker) Iterate(visitor Visitor) error {
 		}
 
 		// Turned to the next child (after potentially many up moves),
-		// try going down again.
+		//		// try going down again.
+		/*
+			转到下一个孩子那里（在可能有很多向上的动作之后），再试着往下走
+		 */
 	}
 }
 

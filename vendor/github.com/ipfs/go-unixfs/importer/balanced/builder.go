@@ -128,7 +128,7 @@ import (
 //        +=========+   +=========+   + - - - - +
 //        | Chunk 1 |   | Chunk 2 |   | Chunk 3 |
 //        +=========+   +=========+   + - - - - +
-//
+//     这就是默克尔树 不是图。。。特么的
 func Layout(db *h.DagBuilderHelper) (ipld.Node, error) {
 	if db.Done() {
 		// No data, return just an empty node.
@@ -161,14 +161,14 @@ func Layout(db *h.DagBuilderHelper) (ipld.Node, error) {
 	/* 否则，从depth开始构建 Merkle Tree,下面会详细描述该过程 */
 	for depth := 1; !db.Done(); depth++ {
 
-		// Add the old `root` as a child of the `newRoot`.
-		newRoot := db.NewFSNodeOverDag(ft.TFile)
+		// Add the old `root` as a child of the `newRoot`. 每次进来都创建一个新root作为父节点
+		newRoot := db.NewFSNodeOverDag(ft.TFile) // DAG上的文件节点
 		newRoot.AddChild(root, fileSize, db)
 
 		// Fill the `newRoot` (that has the old `root` already as child)
 		// and make it the current `root` for the next iteration (when
 		// it will become "old").
-		// 填充 "newRoot"（已经有旧的 "root "作为子节点），并使其成为下一次迭代的当前 "root"（当它成为 "旧 "时
+		// 填充 "newRoot"（已经有旧的 "root "作为子节点），并使其成为下一次迭代的当前 "root"（当它成为 "旧 "时. db里面可以一直读取下一段数据
 		root, fileSize, err = fillNodeRec(db, newRoot, depth)
 		if err != nil {
 			return nil, err
@@ -258,7 +258,7 @@ func fillNodeRec(db *h.DagBuilderHelper, node *h.FSNodeOverDag, depth int) (fill
 			}
 		} else {
 			// Recursion case: create an internal node to in turn keep
-			// descending in the DAG and adding child nodes to it.
+			// descending in the DAG and adding child nodes to it. 递归案例：创建一个内部节点，依次在DAG中不断下降并向其添加子节点. 这里相当于重写创建带有数据的子节点
 			childNode, childFileSize, err = fillNodeRec(db, nil, depth-1)
 			if err != nil {
 				return nil, 0, err
@@ -273,7 +273,7 @@ func fillNodeRec(db *h.DagBuilderHelper, node *h.FSNodeOverDag, depth int) (fill
 
 	nodeFileSize = node.FileSize()
 
-	// Get the final `dag.ProtoNode` with the `FSNode` data encoded inside.
+	// Get the final `dag.ProtoNode` with the `FSNode` data encoded inside. 获得最终的`dag.ProtoNode'，里面有`FSNode'数据编码
 	filledNode, err = node.Commit()
 	if err != nil {
 		return nil, 0, err

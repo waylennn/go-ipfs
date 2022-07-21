@@ -59,8 +59,8 @@ type DirEntry struct {
 	Err error
 }
 
-// UnixfsAPI is the basic interface to immutable files in IPFS
-// NOTE: This API is heavily WIP, things are guaranteed to break frequently
+// UnixfsAPI is the basic interface to immutable files in IPFS 是IPFS中不可改变的文件的基本接口
+// NOTE: This API is heavily WIP, things are guaranteed to break frequently 注意：这个API是严重的WIP，保证会经常出现问题
 type UnixfsAPI interface {
 	// Add imports the data from the reader into merkledag file
 	//
