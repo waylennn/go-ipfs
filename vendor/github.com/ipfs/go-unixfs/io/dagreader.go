@@ -248,6 +248,11 @@ func (dr *dagReader) saveNodeData(node ipld.Node) error {
 // Read the `currentNodeData` buffer into `out`. This function can't have
 // any errors as it's always reading from a `bytes.Reader` and asking only
 // the available data in it.
+/*
+	读取`currentNodeData`缓冲区到`out`。
+	这个函数不能有任何错误，因为它总是从一个`bytes.Reader`中读取，并且只询问其中的可用数据
+*/
+
 func (dr *dagReader) readNodeDataBuffer(out []byte) int {
 
 	n, _ := dr.currentNodeData.Read(out)
