@@ -141,12 +141,18 @@ func (db *DagBuilderHelper) GetCidBuilder() cid.Builder {
 // NewLeafNode creates a leaf node filled with data.  If rawLeaves is
 // defined then a raw leaf will be returned.  Otherwise, it will create
 // and return `FSNodeOverDag` with `fsNodeType`.
+/*
+NewLeafNode创建一个充满数据的叶子节点。 如果rawLeaves是
+ 定义，那么将返回一个原始叶子。 否则，它将创建
+ 并返回`FSNodeOverDag`与`fsNodeType`
+*/
 func (db *DagBuilderHelper) NewLeafNode(data []byte, fsNodeType pb.Data_DataType) (ipld.Node, error) {
 	if len(data) > BlockSizeLimit {
 		return nil, ErrSizeLimitExceeded
 	}
 
 	if db.rawLeaves {
+		// 将数据封装在一个原始节点中
 		// Encapsulate the data in a raw node.
 		if db.cidBuilder == nil {
 			return dag.NewRawNode(data), nil
@@ -159,6 +165,7 @@ func (db *DagBuilderHelper) NewLeafNode(data []byte, fsNodeType pb.Data_DataType
 	}
 
 	// Encapsulate the data in UnixFS node (instead of a raw node).
+	// 将数据封装在UnixFS节点中（而不是一个原始节点）
 	fsNodeOverDag := db.NewFSNodeOverDag(fsNodeType)
 	fsNodeOverDag.SetFileData(data)
 	node, err := fsNodeOverDag.Commit()
@@ -168,7 +175,7 @@ func (db *DagBuilderHelper) NewLeafNode(data []byte, fsNodeType pb.Data_DataType
 	// TODO: Encapsulate this sequence of calls into a function that
 	// just returns the final `ipld.Node` avoiding going through
 	// `FSNodeOverDag`.
-
+	// 只是返回最终的`ipld.Node`，避免经过 `FSNodeOverDag`
 	return node, nil
 }
 

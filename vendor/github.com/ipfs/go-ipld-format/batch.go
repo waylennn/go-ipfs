@@ -133,7 +133,7 @@ func (t *Batch) AddMany(ctx context.Context, nodes []Node) error {
 	for _, nd := range nodes {
 		t.size += len(nd.RawData())
 	}
-
+	// maxnode默认32，一般走前面的条件进入. 这里是2M大小进入
 	if t.size > t.opts.maxSize || len(t.nodes) > t.opts.maxNodes {
 		t.asyncCommit()
 	}
