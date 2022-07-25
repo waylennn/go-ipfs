@@ -356,7 +356,7 @@ func (s *Session) getSession() exchange.Fetcher {
 	return s.ses
 }
 
-// GetBlock gets a block in the context of a request session
+// GetBlock gets a block in the context of a request session  在一个请求会话的上下文中获得一个块
 func (s *Session) GetBlock(ctx context.Context, c cid.Cid) (blocks.Block, error) {
 	var f func() exchange.Fetcher
 	if s.sessEx != nil {

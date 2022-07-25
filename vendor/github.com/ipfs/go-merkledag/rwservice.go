@@ -9,6 +9,10 @@ import (
 
 // ComboService implements ipld.DAGService, using 'Read' for all fetch methods,
 // and 'Write' for all methods that add new objects.
+/*
+	ComboService实现了ipld.DAGService，
+	在所有获取方法中使用 "读"，在所有添加新对象的方法中使用 "写"
+ */
 type ComboService struct {
 	Read  ipld.NodeGetter
 	Write ipld.DAGService

@@ -76,6 +76,10 @@ func NewBasicResolver(fetcherFactory fetcher.Factory) Resolver {
 // ResolveToLastNode walks the given path and returns the cid of the last
 // block referenced by the path, and the path segments to traverse from the
 // final block boundary to the final node within the block.
+/*
+	行走给定的路径，并返回该路径所引用的最后一个块的cid，
+	以及从最后一个块的边界到该块中的最后一个节点所要穿越的路径段
+ */
 func (r *basicResolver) ResolveToLastNode(ctx context.Context, fpath path.Path) (cid.Cid, []string, error) {
 	c, p, err := path.SplitAbsPath(fpath)
 	if err != nil {
@@ -87,6 +91,7 @@ func (r *basicResolver) ResolveToLastNode(ctx context.Context, fpath path.Path) 
 	}
 
 	// create a selector to traverse and match all path segments
+	// 创建一个选择器来遍历和匹配所有的路径段
 	pathSelector := pathAllSelector(p[:len(p)-1])
 
 	// create a new cancellable session
@@ -94,6 +99,7 @@ func (r *basicResolver) ResolveToLastNode(ctx context.Context, fpath path.Path) 
 	defer cancel()
 
 	// resolve node before last path segment
+	// 解决最后一个路径段之前的节点问题
 	nodes, lastCid, depth, err := r.resolveNodes(ctx, c, pathSelector)
 	if err != nil {
 		return cid.Cid{}, nil, err
@@ -109,6 +115,7 @@ func (r *basicResolver) ResolveToLastNode(ctx context.Context, fpath path.Path) 
 	lastSegment := p[len(p)-1]
 
 	// find final path segment within node
+	// 找到节点内的最终路径段
 	nd, err := parent.LookupBySegment(ipld.ParsePathSegment(lastSegment))
 	switch err.(type) {
 	case nil:
@@ -119,6 +126,7 @@ func (r *basicResolver) ResolveToLastNode(ctx context.Context, fpath path.Path) 
 	}
 
 	// if last node is not a link, just return it's cid, add path to remainder and return
+	// 如果最后一个节点不是一个链接，只需返回它的cid，将路径加到剩余部分，然后返回
 	if nd.Kind() != ipld.Kind_Link {
 		// return the cid and the remainder of the path
 		return lastCid, p[len(p)-depth-1:], nil

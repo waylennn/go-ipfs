@@ -21,7 +21,7 @@ import (
 )
 
 // ResolveNode resolves the path `p` using Unixfs resolver, gets and returns the
-// resolved Node.
+// resolved Node. 使用Unixfs解析器解析路径`p`，获取并返回解析后的Node
 func (api *CoreAPI) ResolveNode(ctx context.Context, p path.Path) (ipld.Node, error) {
 	ctx, span := tracing.Span(ctx, "CoreAPI", "ResolveNode", trace.WithAttributes(attribute.String("path", p.String())))
 	defer span.End()
@@ -39,7 +39,7 @@ func (api *CoreAPI) ResolveNode(ctx context.Context, p path.Path) (ipld.Node, er
 }
 
 // ResolvePath resolves the path `p` using Unixfs resolver, returns the
-// resolved path.
+// resolved path. 使用Unixfs解析器解析路径`p`，返回解析后的路径
 func (api *CoreAPI) ResolvePath(ctx context.Context, p path.Path) (path.Resolved, error) {
 	ctx, span := tracing.Span(ctx, "CoreAPI", "ResolvePath", trace.WithAttributes(attribute.String("path", p.String())))
 	defer span.End()
