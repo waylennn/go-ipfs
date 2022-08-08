@@ -235,6 +235,9 @@ func (s *Session) GetBlock(parent context.Context, k cid.Cid) (blocks.Block, err
 // GetBlocks fetches a set of blocks within the context of this session and
 // returns a channel that found blocks will be returned on. No order is
 // guaranteed on the returned blocks.
+/*
+在这个会话的上下文中获取一组块，并返回一个通道，找到的块将被返回。不保证返回的块的顺序
+ */
 func (s *Session) GetBlocks(ctx context.Context, keys []cid.Cid) (<-chan blocks.Block, error) {
 	ctx = logging.ContextWithLoggable(ctx, s.uuid)
 
@@ -437,23 +440,26 @@ func (s *Session) handleReceive(ks []cid.Cid) {
 }
 
 // wantBlocks is called when blocks are requested by the client
+// 当客户端请求blocks的时候，wantBlocks被调用
 func (s *Session) wantBlocks(ctx context.Context, newks []cid.Cid) {
 	if len(newks) > 0 {
 		// Inform the SessionInterestManager that this session is interested in the keys
-		s.sim.RecordSessionInterest(s.id, newks)
+		s.sim.RecordSessionInterest(s.id, newks) // 通知SessionInterestManager，这个会话感兴趣的keys
 		// Tell the sessionWants tracker that that the wants have been requested
-		s.sw.BlocksRequested(newks)
+		s.sw.BlocksRequested(newks) //告诉SessionWants跟踪器，这些需求已经被请求。
 		// Tell the sessionWantSender that the blocks have been requested
-		s.sws.Add(newks)
+		s.sws.Add(newks) // 告诉sessionWantSender，区块已经被请求。
 	}
 
 	// If we have discovered peers already, the sessionWantSender will
 	// send wants to them
+	// 如果我们已经发现了对等节点，sessionWantSender将向他们发送想要的keys
 	if s.sprm.PeersDiscovered() {
 		return
 	}
 
 	// No peers discovered yet, broadcast some want-haves
+	// 没有发现文件所在的对等节点。 把want-haves 进行广播
 	ks := s.sw.GetNextWants()
 	if len(ks) > 0 {
 		log.Infow("No peers - broadcasting", "session", s.id, "want-count", len(ks))

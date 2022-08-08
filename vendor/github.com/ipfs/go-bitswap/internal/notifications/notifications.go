@@ -62,10 +62,14 @@ func (ps *impl) Shutdown() {
 // Subscribe returns a channel of blocks for the given |keys|. |blockChannel|
 // is closed if the |ctx| times out or is cancelled, or after receiving the blocks
 // corresponding to |keys|.
+/*
+ 返回给定keys的block channel。
+ |blockChannel|如果ctx|超时或被取消，或者在接收到与 keys 对应的块之后，就会关闭
+ */
 func (ps *impl) Subscribe(ctx context.Context, keys ...cid.Cid) <-chan blocks.Block {
 
 	blocksCh := make(chan blocks.Block, len(keys))
-	valuesCh := make(chan interface{}, len(keys)) // provide our own channel to control buffer, prevent blocking
+	valuesCh := make(chan interface{}, len(keys)) // 提供我们自己的channel来控制缓冲区，防止堵塞 provide our own channel to control buffer, prevent blocking
 	if len(keys) == 0 {
 		close(blocksCh)
 		return blocksCh
@@ -84,6 +88,7 @@ func (ps *impl) Subscribe(ctx context.Context, keys ...cid.Cid) <-chan blocks.Bl
 
 	// AddSubOnceEach listens for each key in the list, and closes the channel
 	// once all keys have been received
+	// 监听列表里面所有的key， 一旦接受完所有的key 就关闭这个channel
 	ps.wrapped.AddSubOnceEach(valuesCh, toStrings(keys)...)
 	go func() {
 		defer func() {

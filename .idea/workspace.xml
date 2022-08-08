@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b65be89d-acec-4830-a705-c72bc422557c" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/coreapi/path.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/coreapi/path.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-blockservice/blockservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-blockservice/blockservice.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-merkledag/rwservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-merkledag/rwservice.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-path/resolver/resolver.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-path/resolver/resolver.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/bitswap.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/bitswap.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/getter/getter.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/getter/getter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/notifications/notifications.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/notifications/notifications.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/session/session.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/session/session.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/sessionmanager/sessionmanager.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/sessionmanager/sessionmanager.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +67,7 @@
     "configurable.GoLibrariesConfigurable.is.expanded": "true",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/yuanning",
+    "last_opened_file_path": "/Users/yuanning/myself/gitDir/go-ipfs",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.keymap"
   }
@@ -91,6 +92,27 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
@@ -149,29 +171,69 @@
           <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/core/commands/cat.go</url>
-          <line>62</line>
-          <option name="timeStamp" value="165" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/core/coreapi/unixfs.go</url>
-          <line>208</line>
-          <option name="timeStamp" value="167" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/vendor/github.com/mr-tron/base58/base58/base58.go</url>
           <line>225</line>
           <option name="timeStamp" value="174" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/core/coreapi/path.go</url>
-          <line>33</line>
-          <option name="timeStamp" value="177" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/thirdparty/verifbs/verifbs.go</url>
           <line>50</line>
           <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/getter/getter.go</url>
+          <line>47</line>
+          <option name="timeStamp" value="185" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/session/session.go</url>
+          <line>243</line>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/getter/getter.go</url>
+          <line>52</line>
+          <option name="timeStamp" value="192" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-blockservice/blockservice.go</url>
+          <line>232</line>
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/session/session.go</url>
+          <line>172</line>
+          <option name="timeStamp" value="195" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-blockservice/blockservice.go</url>
+          <line>209</line>
+          <option name="timeStamp" value="197" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/bitswap.go</url>
+          <line>707</line>
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/session/sessionwantsender.go</url>
+          <line>250</line>
+          <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/session/sessionwantsender.go</url>
+          <line>187</line>
+          <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/session/session.go</url>
+          <line>306</line>
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/vendor/github.com/ipfs/go-bitswap/internal/session/session.go</url>
+          <line>444</line>
+          <option name="timeStamp" value="204" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

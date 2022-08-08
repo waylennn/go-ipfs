@@ -174,6 +174,10 @@ func WithTaskComparator(comparator TaskComparator) Option {
 // New initializes a BitSwap instance that communicates over the provided
 // BitSwapNetwork. This function registers the returned instance as the network
 // delegate. Runs until context is cancelled or bitswap.Close is called.
+/*
+初始化一个BitSwap实例，通过提供的BitSwapNetwork进行通信。
+该函数将返回的实例注册为网络委托。运行到上下文被取消或bitswap.Close被调用为止
+ */
 func New(parent context.Context, network bsnet.BitSwapNetwork,
 	bstore blockstore.Blockstore, options ...Option) exchange.Interface {
 
@@ -695,6 +699,11 @@ func (bs *Bitswap) IsOnline() bool {
 // method, but the session will use the fact that the requests are related to
 // be more efficient in its requests to peers. If you are using a session
 // from go-blockservice, it will create a bitswap session automatically.
+/*
+生成一个新的Bitswap会话。你应该使用这个方法，而不是调用Bitswap.GetBlocks，任何时候你打算连续做几个相关的块请求。
+返回的会话将有它自己的GetBlocks方法，但会话将利用这些请求是相关的这一事实来更有效地请求对等体。
+如果你使用的是go-blockservice的会话，它将自动创建一个bitswap会话。
+ */
 func (bs *Bitswap) NewSession(ctx context.Context) exchange.Fetcher {
 	return bs.sm.NewSession(ctx, bs.provSearchDelay, bs.rebroadcastDelay)
 }

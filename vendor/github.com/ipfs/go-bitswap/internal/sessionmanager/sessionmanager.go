@@ -81,7 +81,7 @@ func New(ctx context.Context, sessionFactory SessionFactory, sessionInterestMana
 }
 
 // NewSession initializes a session with the given context, and adds to the
-// session manager.
+// session manager. 用给定的上下文初始化一个会话，并向会话管理器添加这个会话
 func (sm *SessionManager) NewSession(ctx context.Context,
 	provSearchDelay time.Duration,
 	rebroadcastDelay delay.D) exchange.Fetcher {
