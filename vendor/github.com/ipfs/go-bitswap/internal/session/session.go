@@ -344,28 +344,44 @@ func (s *Session) run(ctx context.Context) {
 // Called when the session hasn't received any blocks for some time, or when
 // all peers in the session have sent DONT_HAVE for a particular set of CIDs.
 // Send want-haves to all connected peers, and search for new peers with the CID.
+/*
+当会话在一段时间内没有收到任何块，或者当会话中的所有对等体都为一组特定的CID发送了DONT_HAVE时，
+会被调用。向所有连接的对等体发送want-haves，并搜索具有该CID的新对等体
+ */
 func (s *Session) broadcast(ctx context.Context, wants []cid.Cid) {
 	// If this broadcast is because of an idle timeout (we haven't received
 	// any blocks for a while) then broadcast all pending wants
+	// 如果这个广播是因为空闲超时（我们已经有一段时间没有收到任何区块了），那么就广播所有待定的请求
 	if wants == nil {
 		wants = s.sw.PrepareBroadcast()
 	}
 
 	// Broadcast a want-have for the live wants to everyone we're connected to
+	// 向我们连接的每一个节点播报live wants
 	s.broadcastWantHaves(ctx, wants)
 
 	// do not find providers on consecutive ticks
 	// -- just rely on periodic search widening
+	/*
+	 不要在连续点击时找到提供者
+	-- 只是依靠定期的搜索扩大
+	 */
 	if len(wants) > 0 && (s.consecutiveTicks == 0) {
 		// Search for providers who have the first want in the list.
 		// Typically if the provider has the first block they will have
 		// the rest of the blocks also.
+		/*
+		搜索列表中拥有第一个want的提供者。
+		通常情况下，如果提供者有第一个区块，他们也会有
+		其余的区块也有
+		 */
 		log.Debugw("FindMorePeers", "session", s.id, "cid", wants[0], "pending", len(wants))
 		s.findMorePeers(ctx, wants[0])
 	}
 	s.resetIdleTick()
 
 	// If we have live wants record a consecutive tick
+	// 如果我们有live wants 记录的连续勾选
 	if s.sw.HasLiveWants() {
 		s.consecutiveTicks++
 	}

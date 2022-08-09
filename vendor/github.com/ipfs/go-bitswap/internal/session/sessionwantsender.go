@@ -180,7 +180,7 @@ func (sws *sessionWantSender) SignalAvailability(p peer.ID, isAvailable bool) {
 	sws.addChangeNonBlocking(change{availability: availability})
 }
 
-// Run is the main loop for processing incoming changes
+// Run is the main loop for processing incoming changes 是处理传入变化的主循环。
 func (sws *sessionWantSender) Run() {
 	for {
 		select {
@@ -231,7 +231,7 @@ func (sws *sessionWantSender) addChangeNonBlocking(c change) {
 }
 
 // collectChanges collects all the changes that have occurred since the last
-// invocation of onChange
+// invocation of onChange 收集自上一次调用onChange后发生的所有变化。 调用后发生的所有变化
 func (sws *sessionWantSender) collectChanges(changes []change) []change {
 	for len(changes) < changesBufferSize {
 		select {
@@ -244,10 +244,10 @@ func (sws *sessionWantSender) collectChanges(changes []change) []change {
 	return changes
 }
 
-// onChange processes the next set of changes
+// onChange processes the next set of changes //处理下一组变化
 func (sws *sessionWantSender) onChange(changes []change) {
 	// Several changes may have been recorded since the last time we checked,
-	// so pop all outstanding changes from the channel
+	// so pop all outstanding changes from the channel 此时channel里面可能已经有了一些change 都取出来
 	changes = sws.collectChanges(changes)
 
 	// Apply each change
@@ -257,7 +257,7 @@ func (sws *sessionWantSender) onChange(changes []change) {
 	for _, chng := range changes {
 		// Initialize info for new wants
 		for _, c := range chng.add {
-			sws.trackWant(c)
+			sws.trackWant(c) // wants 里面加入这个cid
 		}
 
 		// Remove cancelled wants
@@ -266,10 +266,10 @@ func (sws *sessionWantSender) onChange(changes []change) {
 			cancels = append(cancels, c)
 		}
 
-		// Consolidate updates and changes to availability
+		// Consolidate updates and changes to availability 巩固更新和更改可用性
 		if chng.update.from != "" {
 			// If the update includes blocks or haves, treat it as signaling that
-			// the peer is available
+			// the peer is available 如果更新包括块或haves，将其视为对等体可用的信号
 			if len(chng.update.ks) > 0 || len(chng.update.haves) > 0 {
 				p := chng.update.from
 				availability[p] = true
@@ -285,14 +285,14 @@ func (sws *sessionWantSender) onChange(changes []change) {
 		}
 	}
 
-	// Update peer availability
+	// Update peer availability 更新可用的对等节点
 	newlyAvailable, newlyUnavailable := sws.processAvailability(availability)
 
-	// Update wants
+	// Update wants 更新wants
 	dontHaves := sws.processUpdates(updates)
 
 	// Check if there are any wants for which all peers have indicated they
-	// don't have the want
+	// don't have the want 检查是否有任何的wants，而所有对等节点都表示他们没有这些want。
 	sws.checkForExhaustedWants(dontHaves, newlyUnavailable)
 
 	// If there are any cancels, send them
@@ -301,6 +301,7 @@ func (sws *sessionWantSender) onChange(changes []change) {
 	}
 
 	// If there are some connected peers, send any pending wants
+	// 如果有一些连接的对等节点，则发送任何待处理的wants
 	if sws.spm.HasPeers() {
 		sws.sendNextWants(newlyAvailable)
 	}
